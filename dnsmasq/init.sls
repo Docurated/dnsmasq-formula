@@ -72,6 +72,12 @@ dnsmasq_addresses:
       - service: dnsmasq
 {%- endif %}
 
+{%- if grains.os_family == 'Debian' %}
+dns-root-data:
+   pkg.installed:
+     - version: 2017072601~deb8u1     
+{%- endif %}
+
 dnsmasq:
   pkg.installed: []
   service.running:
